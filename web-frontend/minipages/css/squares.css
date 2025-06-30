@@ -1,0 +1,27 @@
+body {
+    background-color: blue;
+    /*display: flex;
+    width: 900px;
+    flex-wrap:wrap;*/
+
+    display: grid;
+    grid-template-rows: repeat(9, 100px);
+    grid-template-columns: repeat(9, 100px);
+}
+
+.blanc, .noir, .rouge {
+    width: 100px;
+    height: 100px;
+}
+
+.blanc {
+    background-image: url('../img/white.png');
+}
+
+.noir {
+    background-image: url('../img/black.png');
+}
+
+.rouge {
+    background-image: url('../img/red.png');
+}
