@@ -1,0 +1,133 @@
+/*
+breakpoints {
+    WIDTH < 960px; :: AFFICHAGE POUR LES PETITS ÉCRANS ET MOBILES
+    WIDTH entre 960 et 1280px : tablettes et écrans moyens;
+    WIDTH >  1280px = écrans larges et ordinateurs de bureau;
+}
+*/
+
+
+body {
+    /*width: 1440px;
+    max-width: 100%;*/
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:    "HEADER" 
+                            "NAV" 
+                            "MAIN" 
+                            "TOTO";
+}
+
+header {
+    grid-area: HEADER;
+}
+
+main {
+    grid-area: MAIN;
+}
+
+footer {
+    grid-area: TOTO;
+    display: none;
+}
+
+.menu {
+    grid-area: NAV;
+}
+
+
+@media screen and (min-width: 1024px) {
+    body {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 200px auto 50px;
+        grid-template-areas: "HEADER HEADER" 
+                             "NAV MAIN" 
+                             "TOTO TOTO";   
+    }
+
+    .menu ul {
+        flex-direction: column;
+    }
+
+    footer {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+    body {
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 200px auto;
+            grid-template-areas: "HEADER HEADER HEADER" 
+                                "NAV MAIN TOTO";   
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+header, footer {
+    background: #0078d7;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+section {
+    margin-bottom: 2rem;
+}
+
+
+.menu ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.menu ul li {
+    margin: 0;
+}
+
+.menu ul li a {
+    color: #0078d7;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.menu ul li a:hover,
+.menu ul li a:focus {
+    background: #0078d7;
+    color: #fff;
+}
+
+
