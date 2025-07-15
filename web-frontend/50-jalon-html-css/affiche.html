@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice : Affiche de Consignes de Sécurité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .safety-poster {
+            width: 100%;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 3px dashed yellow;
+            border-radius: 8px;
+            font-family: 'Arial Black', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .poster-header {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .poster-header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .poster-header .danger-warning {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #dc3545;
+            margin-top: 5px;
+        }
+        .poster-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .poster-body li {
+            background-color: #e2f0d9;
+            color: #155724;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 500;
+            line-height: 1.4;
+            text-align: left; 
+        }
+        .poster-img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .poster-footer {
+            margin-top: 25px;
+            padding: 10px;
+            background-color: #e9ecef;
+            color: #6c757d;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+</style>
+</head>
+<body>
+    <main>
+        <section>
+            <article class="safety-poster">
+                <header class="poster-header">
+                    <h1>Consignes de sécurité Électrique</h1>
+                    <p class="danger-warning">⚠️ DANGER DE MORT - HAUTE TENSION ⚠️</p>
+                </header>
+                <div class="poster-body">
+                    <ul>
+                        <li>🚫 Interdire l'accès aux personnes non autorisées.</li>
+                        <li>🚫 Ne jamais toucher un câble tombé à terre.</li>
+                        <li>✅ Utiliser uniquement des outils isolés.</li>
+                        <li>✅ Couper le courant avant toute intervention.</li>
+                        <li>⚠️ En cas d'accident, alerter immédiatement les secours.</li>
+                    </ul>
+                </div>
+                <img class="poster-img" src="./pictogrammes.jpg" alt="pictogrammes">
+                <footer class="poster-footer">
+                    <p>⚠️ La sécurité est l'affaire de tous ! ⚠️</p>
+                </footer>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
