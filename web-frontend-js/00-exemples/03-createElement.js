@@ -3,8 +3,6 @@ const addItem = document.getElementById('addItem');
 const clearItems = document.getElementById('clearItems');
 const myList = document.querySelector('#myList');
 
-let toto = document.getElementById('toto');
-console.log(toto.dataset);
 
 const myIdeas = ['Element REF-1', 'Element REF', 'Element REF+1'];
 /*
@@ -19,36 +17,25 @@ console.log(myIdeas);
 * Ajoute la valeur saisie dans le champ texte à la section myList
 * */
 function addIdea() {
-   // console.log('OK');
-   // récupérer la valeur du champ newItem
    let newItemValue = newItem.value;
-   console.log(newItemValue);
-
-   // ajoute la valeur au tableau MyIdeas
    myIdeas.push(newItemValue);
-   console.log(myIdeas);
    refreshUi();
 }
 
+/**
+ * Supprime un élément du tableau de données
+ * @param {PointerEvent} event 
+ */
 function deleteIdea(event) {
-
-   
    let btn = event.target; // récupérer le bouton qui a déclenché l'évènement
    let position = btn.dataset.position;
-   console.log(btn, position);
-
-   myIdeas.splice(position, 1);
-
-   // supprime un élément spécifique d'un tableau !
-   //myIdeas.filter(); // filtrer le tableau en supprimant l'élément à supprimer
-   //myIdeas.splice(); // supprime un élément du tableau à un index spécifique
-
-   console.log(myIdeas);
-
+   myIdeas.splice(position, 1); // supprimer un élément à partir de sa position. (voir aussi filter())
    refreshUi();
-
 }
 
+/**
+ * Mets à jour l'interface utilisateur à partir du jeu de données
+ */
 function refreshUi() {
 
    myList.innerHTML = '';
@@ -67,7 +54,6 @@ function refreshUi() {
       p.append(btn);
 
    }
-
 }
 
 // addItem.addEventListener('click', addIdea);
