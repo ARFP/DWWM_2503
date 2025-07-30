@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Formulaire d'inscription de l'association SportTous</h1>
+        <h2>Réservés aux personnes majeures</h2>
+        <ul>
+            <li>Nom</li>
+            <li>Prénom</li>
+            <li>Date de naissance</li>
+            <li>Téléphone</li>
+            <li>Adresse postale
+                <ul>
+                    <li>Numéro de rue</li>
+                    <li>Nom de la rue</li>
+                    <li>Code postal</li>
+                    <li>Commune</li>
+                </ul>
+            </li>
+            <li>Adresse Email</li>
+            <li>Les sports pratiqués</li>
+            <li>Certifier majorité</li>
+            <li>Accepter les conditions</li>
+            <li>Case RGPD</li>
+        </ul>
+    </header>
+    <main>
+        <form>
+            <fieldset>
+                <legend>Etat civil</legend>
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="monNom" required placeholder="Nom de famille" title="Inscris ton nom de famille">
+                <label for="prenom">Prénom:</label>
+                <input type="text" id="prenom" required placeholder="Prénom" title="Inscris ton prénom">
+                <label for="ddn">Date de naissance </label>
+                <input type="date" id="ddn" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Coordonnées</legend>
+                <label for="telephone">Téléphone </label>
+                <input type="tel" id="telephone" required>
+
+                <label for="adresse_num">Numéro de rue </label>
+                <input type="number" min="1" max="99999" step="1"  id="adrese_num" required>
+                <select>
+                    <option>Bis</option>
+                    <option>C</option>
+                    <option>Ter</option>
+                    <option>Alpha</option>
+                    <option selected></option>
+                </select>
+                <label>Nom de la rue</label>
+                <input type="text" required>
+                <label>Code postal</label>
+                <input type="text">
+                <label>Commune</label>
+                <input type="text">
+            </fieldset>
+
+            <fieldset>
+                <legend>Informations complémentaires</legend>
+                <label for="infos">Saisissez les sports que vous pratiquez</label>
+                <textarea id="infos" cols="100" rows="10" placeholder="toto"></textarea>
+            </fieldset>
+            
+            <hr>
+            <fieldset>
+                <input type="checkbox" id="majeur" value="1" required> <label for="majeur">Je certifie être majeur</label>
+                <input type="checkbox" id="cgu" required> <label for="majeur">J'accepte les conditions d'utilisation</label>
+                <input type="checkbox" id="rgpd" required checked> <label for="majeur">J'ai pris connaissance de la politique RGPD</label>
+            </fieldset>
+            <hr>
+            <button type="submit">Valider</button>
+        </form>
+    </main>
+</body>
+</html>
