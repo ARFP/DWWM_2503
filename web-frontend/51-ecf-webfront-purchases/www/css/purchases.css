@@ -1,0 +1,133 @@
+/*
+PURCHASES CSS
+
+@author: NOM Prénom
+@version: 1.0
+@date: 2025-07-31
+@description: Code CSS pour la page des demandes d'achats.
+*/
+
+:root {
+    --light: white;
+    --dark: black;
+    --crm-primary: #1b296a; /* Obligatoire */
+    --crm-secondary: #ed6840; /* Obligatoire */
+    --crm-ofp: #7db9da;
+    --crm-alert: #cf2d4f;
+    --crm-warning: #f6af2e;
+    --crm-success: #488287;
+    --border-radius: .5rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   /* Vous pouvez modifier la police */
+    background-color: var(--crm-primary);   /* Vous pouvez changer la couleur de fond */
+    color: var(--light);   /* Vous pouvez changer la couleur du texte */
+}
+
+.title {
+    padding: .5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2rem;
+    background-color: var(--light);
+    color: var(--crm-primary)
+}
+
+main, .info {
+    width: 1200px;
+    max-width: 100%;
+    margin: auto;
+}
+
+
+fieldset {
+    border: 1px solid var(--crm-secondary);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;;
+}
+
+fieldset > div {
+    margin: 1rem 0;
+}
+
+legend {
+    font-weight: bold;
+    color: var(--light)
+}
+
+label {
+    display: inline-block;
+    width: 32rem;
+    color: var(--crm-ofp);
+}
+
+input, textarea, select {
+    width: 32rem;
+    padding: .5rem;
+    border: 1px solid var(--crm-ofp);
+    box-shadow: 0 0 5px 0 var(--crm-secondary);
+    border-radius: var(--border-radius);
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--crm-ofp);
+    
+}
+
+textarea {
+    width: 32rem;
+    height: 10rem;
+    vertical-align: top;
+}
+
+button {
+    cursor: pointer;
+    padding: 1rem;
+    border: 1px solid var(--crm-secondary);
+    border-radius: var(--border-radius);
+    background-color: var(--crm-secondary);
+    color: var(--crm-primary);
+    transition: all ease 1s;
+}
+
+
+button:hover {
+    box-shadow: 0 0 10px 0 var(--crm-ofp);
+    background-color: var(--crm-warning);
+    color: var(--dark);
+}
+
+.info {
+    background-color: var(--light);
+    color: var(--crm-primary);
+    border-radius: var(--border-radius);
+}
+
+.info h2 {
+    background-color: var(--crm-ofp);
+    color: var(--crm-secondary);
+    padding: 1rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.info p {
+    padding: 1rem;
+    text-align: justify;
+}
