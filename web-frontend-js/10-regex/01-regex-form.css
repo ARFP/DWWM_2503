@@ -21,7 +21,8 @@ main {
     max-width: 100%;
 }
 
-label {
+label, input, button {
     display: inline-block;
     width: 20rem;
+    margin-bottom: 1rem;
 }
