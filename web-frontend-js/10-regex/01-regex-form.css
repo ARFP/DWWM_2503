@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6rem;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+main {
+    width: 1200px;
+    max-width: 100%;
+}
+
+label {
+    display: inline-block;
+    width: 20rem;
+}
