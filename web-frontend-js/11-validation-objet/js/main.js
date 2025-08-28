@@ -1,4 +1,4 @@
-
+import { Article } from './Article.js';
 
 const formulaire = document.getElementById('formulaire');
 const nom = document.getElementById('nom');
@@ -14,18 +14,34 @@ const articles = document.getElementById('articles'); // conteneur des articles 
  * 4. Appelle la fonction qui ajoute l'article validé dans la page HTML
  * 5.(Bonus) Sauvegarde les articles dans le stockage local du navigateur
  */
-formulaire.addEventListener('submit', () => {
+formulaire.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    let monNom = nom.value;
+    let monPrix = prix.value;
+    let maTva = tva.value; 
+
+    let monArticle = new Article(monNom, monPrix, maTva);
+    // let monArticle = new Article(nom.value, prix.value, tva.value);
+    console.log(monArticle);
+
+    // @TODO: validation des données
+
+
+    ajouterArticle(monArticle);
 
 });
 
 /**
- * Ajoute un article validé dan la page HTML sous le formulaire
- * @param {*} article l'article à ajouter
+ * Ajoute un article validé dans la page HTML sous le formulaire
+ * @param {Article} _article l'article à ajouter
  */
-function ajouterArticle(article) {
+function ajouterArticle(_article) {
     let li = document .createElement('li');
 
-    // Le traitement se fera ici
+    // Le traitement se fera ici*
+    li.textContent = _article.nom + ' ' + _article.prixTTC();
 
-    articles.appendChild(p);
+    articles.appendChild(li);
 }
