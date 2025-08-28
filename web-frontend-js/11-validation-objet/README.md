@@ -2,7 +2,7 @@
 
 Le problème des méthodes "spaghetti" (une série de if/else pour chaque champ) :
 
--L code devient rapidement illisible, difficile à maintenir et à réutiliser dès que le formulaire grandit.
+- Le code devient rapidement illisible, difficile à maintenir et à réutiliser dès que le formulaire grandit.
 - Le code devient difficilement maintenable lorsque plusieurs formulaires doivent valider les mêmes types de données.
 
 **La solution orientée objet** : Nous pouvons regrouper la logique de validation et les données du formulaire dans des entités logiques : des objets et des classes. Cela rend le code plus propre, plus modulaire et plus facile à tester.
