@@ -16,10 +16,10 @@ export class Validation
      * Valide un prix 
      *  - doit etre un numérique strictement positif
      * @param {Number} _prix le prix à valider 
+     * @throws {Error} Le nombre doit être un nombre valide et strictement positif
      */
     validerNombrePositif(_nombre) { 
 
-       // try {
             this.validerFormatNombre(_nombre);
 
             _nombre = parseFloat(_nombre); // "12.9" --> 12.9
@@ -27,9 +27,6 @@ export class Validation
             if(_nombre < 0) { // si ce n'est pas un nombre positif !
                 throw new Error('Ce n\'est pas un nombre positif');
             }
-       /* } catch(error) {
-            throw error;
-        }*/
     }
 
     validerNombreNegatif(_nombre) {
