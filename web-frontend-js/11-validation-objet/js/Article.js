@@ -1,3 +1,5 @@
+import { Validation } from './Validation.js';
+
 /**
  * Représente un article
  * @author Mike DEV <mdevoldere@example.com>
@@ -13,13 +15,21 @@ export class Article
      */
     constructor(_nom, _prixHT, _tva) {
         this.nom = _nom;
-        this.prixHT = parseInt(_prixHT);
-        this.tva = parseInt(_tva);
+        this.prixHT = _prixHT;
+        this.tva = _tva;
+        
     }
 
+    estValide() {
+        let validation = new Validation();
+        validation.validerNombrePositif(this.prixHT);        
+    }
+
+    /**
+     * Calcule et retourne le prix TTC de l'article
+     * @returns {Number} Le prix TTC
+     */
     prixTTC() {
         return this.prixHT * (1 + this.tva / 100);
     }
-
-
 }

@@ -24,12 +24,19 @@ formulaire.addEventListener('submit', (event) => {
 
     let monArticle = new Article(monNom, monPrix, maTva);
     // let monArticle = new Article(nom.value, prix.value, tva.value);
-    console.log(monArticle);
 
-    // @TODO: validation des données
+    try {
+        monArticle.estValide();
+        console.log(monArticle);
+        ajouterArticle(monArticle);
+    } catch(error) {
+        console.log('ERREUR: ' + error);
+    }
+   
 
 
-    ajouterArticle(monArticle);
+
+    
 
 });
 
