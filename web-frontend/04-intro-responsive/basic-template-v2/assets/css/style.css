@@ -1,0 +1,153 @@
+:root {
+    --primary: #111111;
+    --secondary: #CCCCCC;
+    --link: #085E8F;
+    --highlight: #00000015;
+    --hover: #085E8F44;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #CCCCCC;
+        --secondary: #111111;
+        --link: #09BCE0;
+        --highlight: #FFFFFF44;
+        --hover: #09BCE044;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+   font-size: 62.5%; /* 10px */
+}
+
+body {
+    color: var(--primary);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    background-color: var(--secondary);
+    grid-template-columns: 24rem 1fr 24rem;
+    grid-template-rows: 20rem auto;
+    grid-template-areas: "H H H"
+                         "N M A";
+
+}
+
+body > header {
+    grid-area: H;
+    background-image: url('../img/basic-template-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+body > header a {
+    text-decoration: none;
+    color: var(--secondary);
+    padding: 2rem;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+body > nav {
+    grid-area: N;
+    background-color: var(--secondary);
+}
+
+.menu-head, .ad-head {
+    background-color: var(--highlight);
+    padding: 1.2rem;
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.menu {
+    list-style: none;
+    padding-left: 0;
+}
+
+.menu a {
+    color: var(--link);
+    text-decoration: none;
+    display: block;
+    padding: .5rem;
+    background-color: var(--highlight);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.menu a:hover {
+    background-color: var(--hover);
+    color: var(--secondary);
+}
+
+
+
+main {
+    grid-area: M;
+}
+
+.page-title {
+    background-color: var(--highlight);
+    padding: 1.2rem;
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.page-main {
+    display:flex;
+    /*flex-direction:row;
+    flex-wrap: wrap;*/
+    flex-flow: row wrap; /* equivalent des 2 précédents */
+    justify-content: space-evenly;
+    /*align-items: stretch; <<- valeur par défaut*/
+    gap: 2rem;
+}
+
+.page-main article {
+    padding: 1rem;
+    width: 40%;
+    background-color: var(--highlight);
+}
+
+
+body > aside {
+    grid-area: A;
+    text-align: justify;
+    font-size: 1.2rem;
+    background-color: var(--highlight);
+    padding: .5rem;
+}
+
+.ad-head {
+    color: var(--link);
+    background-color: var(--highlight);
+    margin: -0.5rem -0.5rem 0;
+}
+
+.ad {
+    margin: 0;
+}
+
+.ad img {
+    width: 100%;
+}
+
+.btn-buy {
+    display: block;
+    text-align: center;
+    background-color: var(--link);
+    color: var(--secondary);
+    padding: .5rem 3rem;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 2rem;
+}

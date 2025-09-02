@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module">
+
+        const t = document.getElementById('t');
+        var i = 0;
+
+        function createDuoTd(tr) {
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+
+            td1.textContent = ++i;
+            td2.textContent = i*999;
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+        }
+
+        setInterval(() => {
+
+            let tr = document.createElement('tr');
+            t.appendChild(tr);
+            createDuoTd(tr);
+            
+
+        }, 1000);
+    </script>
+</head>
+<body>
+    <h1>Tableau </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="t">
+
+        </tbody>
+    </table>
+</body>
+</html>

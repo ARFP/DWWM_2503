@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent Vega</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+        }
+        h1 {
+            text-align: right;
+        }
+        #pos {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display:flex;
+            flex-flow: column nowrap;
+            text-align: center;
+            align-items: flex-start;
+        }
+        #no {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: darkgreen;
+            color: yellow;
+            position: absolute;
+            top: 200px;
+            left: 950px;
+            transition: all ease .2s;
+            background-size: cover;
+            background-image: url('vega-base.jpg');
+        }
+        #no span {
+            display: block;
+            white-space: nowrap;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+    <script type="module">
+        var i = 0;
+        const a = document.getElementById('no');
+        const tries = document.getElementById('tries');
+        const x = document.getElementById('X');
+        const y = document.getElementById('Y');
+        var noPos;
+
+        no.addEventListener('click', () => { alert('Tricheur !!!')} );
+
+        document.body.addEventListener('mousemove', (e) => {
+            //console.log({ no });
+            noPos = no.getBoundingClientRect();
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const centerX = noPos.left + noPos.width / 2;
+            const centerY = noPos.top + noPos.height / 2;
+            const dist = Math.hypot(centerX - mouseX, centerY - mouseY);
+
+            tries.textContent = "T: " + i;
+            x.textContent = 'X: ' + e.clientX;
+            y.textContent = 'Y: ' + e.clientY;
+
+            if (dist < 160) {
+                i++;
+                // Nouvelle position et image aléatoire
+                const maxLeft = window.innerWidth - noPos.width;
+                const maxTop = window.innerHeight - noPos.height;
+                const newLeft = Math.random() * maxLeft;
+                const newTop = Math.random() * maxTop;
+                no.style.left = `${newLeft}px`;
+                no.style.top = `${newTop}px`;
+
+                let h = Math.floor(Math.random() * (2 - 1 + 1) + 1);
+                if(h === 2) {
+                    no.style.backgroundImage="url('vega2.jpg')";
+                } else {
+                    no.style.backgroundImage="url('vega.jpg')";
+                }
+                
+
+                setTimeout(() => {
+                    let g = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+                    if(i % 2 === 0) {
+                        no.style.backgroundImage = "url('vega-wait.jpg')";
+                    } else {
+                        no.style.backgroundImage = "url('vega-base.jpg')";
+                    }
+                    
+                }, 1000);
+            }
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Don't mess with Vincent Vega !</h1>
+    <div id="pos">
+        <span id="tries">T: 0</span>  
+        <span id="X">X: 1</span>    
+        <span id="Y">Y: 2</span>
+    </div>
+    <div id="no"></div>
+</body>
+</html>

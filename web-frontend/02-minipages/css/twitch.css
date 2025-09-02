@@ -1,0 +1,26 @@
+/*
+Couleur bleu :  #008CBA
+Couleur gris :  #555555
+Couleur verte :  #4CAF50
+Police : monospace
+*/
+
+table {
+    border: 1px solid red;
+    border-collapse: separate;
+}
+
+th, td {
+    border: 1px solid blue;
+}
+
+th {
+    background-color: lightgray;
+}
+
+td span {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2px;
+    display: block;
+}

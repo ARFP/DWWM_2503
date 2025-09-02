@@ -1,0 +1,51 @@
+:root {
+    --clr1 :  #5C94FC; /* couleur de fond */
+    --clr2:  #4976C9; 
+    --clr3:  #375897;
+    --clr4 :  #243B64;
+    --clr5:  #121D32;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--clr1);
+}
+
+
+main{
+    border: 5px solid var(--clr5);
+    width: 60%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main div {
+   border: 5px solid var(--clr5);
+   height:  25%;
+   border-left: none;
+}
+
+main div:first-child{
+    width: 25%;
+    background-color: var(--clr2);
+    border-top: none;
+    border-bottom: none;
+}
+main div:nth-child(2){
+    width: 50%;
+    background-color: var(--clr3);;
+    border-bottom: none;
+}
+main div:nth-child(3){
+    width: 75%;
+    background-color: var(--clr4);;
+    border-bottom: none;
+}
+main div:last-child{
+    width: 100%;
+    background-color: var(--clr5);
+}
