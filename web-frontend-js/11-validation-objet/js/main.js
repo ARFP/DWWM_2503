@@ -32,11 +32,6 @@ formulaire.addEventListener('submit', (event) => {
     } catch(error) {
         console.log('ERREUR: ' + error);
     }
-   
-
-
-
-    
 
 });
 

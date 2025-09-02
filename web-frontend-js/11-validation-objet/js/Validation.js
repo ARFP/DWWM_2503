@@ -5,7 +5,7 @@ export class Validation
 {
 
     validerFormatNombre(_nombre) {
-        let regex = /^[\-]?[0-9]+[\.|,]?[0-9]{0,15}$/; // REGEX nombre entier ou décimal strictement positif
+        let regex = /^[\-]?[0-9]+[\.|,]?[0-9]{0,15}$/; // REGEX nombre entier ou décimal
 
         if(!regex.test(_nombre)) {
             throw new Error('Ce n\'est pas un nombre valide');
