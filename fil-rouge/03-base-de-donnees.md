@@ -19,13 +19,23 @@ Un utilisateur non identifié est considéré comme un **invité**.
 - Implémenter le script SQL de création de la base de données
 
 
+### Dictionnaire des données
+
 |Mnémonique | Signification | Type | Longueur | Contraintes |
 | --- | --- | --- | --- | --- |
 | **utilisateur_id** | Identifiant | N | 11 | Identifiant, A.I |
 | **utilisateur_nom** | Nom  de l'utilisateur | A | 60 | Obligatoire |
 | **utilisateur_prenom** | Prénom de l'utilisateur | A | 60 | Obligatoire |
-| **utilisateur_email** | Adresse électronique de l'utilisateur | AN | 320 | Obligatoire |
+| **utilisateur_email** | Adresse électronique de l'utilisateur | AN | 320 | Obligatoire, Unique |
 | **utilisateur_pass** | Mot de passe de l'utilisateur | * | 64 | Obligatoire, chiffré avec ARGON_2ID |
 | **role_id** | Identifiant du rôle | N | 11 | Identifiant, A.I |
 | **role_nom** | Nom du rôle | A | 20 | Obligatoire |
+
+### Règles de gestion
+
+Les mots de passe sont obligatoirement chiffrés
+
+1 utilisateur détient 1 seul rôle
+
+1 rôle est détenu par 0 ou plusieurs utilisateurs
 
