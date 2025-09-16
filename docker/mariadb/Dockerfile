@@ -15,3 +15,5 @@ RUN apt-get update
 
 # Installer la couche SSH (pour sécuriser les connexions et permettre de se connecter au terminal à distance)
 RUN apt-get install -y --fix-missing openssh-server openssh-client
+
+
