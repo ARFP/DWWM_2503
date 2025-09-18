@@ -10,3 +10,4 @@ ENV MYSQL_USER=mike
 # Mot de passe pour se connecter à la base de données
 ENV MYSQL_PASSWORD=1234
 
+# VOLUME ["/data", "/toto"]
