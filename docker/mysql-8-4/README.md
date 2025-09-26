@@ -1,4 +1,4 @@
-# DOCKER IMAGE MySQL 5.7
+# DOCKER IMAGE MySQL 8.4
 
 > Dans les instructions de ce document, remplacer `mdevoldere` par votre nom d'utilisateur de votre compte Docker HUB.
 
@@ -6,14 +6,14 @@
 
 1. Ouvrir un terminal et se positionner dans le répertoire du Dockerfile
 2. Saisir la commande : 
-    - `docker build . mdevoldere/mysql:5.7`
+    - `docker build . mdevoldere/mysql:8.4`
 
 ## Créer un conteneur
 
 1. Dans un terminal, saisir la commande :
- - `docker run -d -p 4057:3306 --name mdevoldere-mysql57 -v mysql57-data:/var/lib/mysql mdevoldere/mysql:5.7`
+ - `docker run -d -p 4084:3306 --name mdevoldere-mysql84 -v mysql84-data:/var/lib/mysql mdevoldere/mysql:8.4`
 
- Remplacez le port 4057 par celui de votre choix.
+ Remplacez le port 4084 par celui de votre choix.
 
  ## Tester la connexion
 

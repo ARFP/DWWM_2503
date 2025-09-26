@@ -1,4 +1,4 @@
-# DOCKER IMAGE MySQL 5.7
+# DOCKER IMAGE MariaDB 11
 
 > Dans les instructions de ce document, remplacer `mdevoldere` par votre nom d'utilisateur de votre compte Docker HUB.
 
@@ -6,12 +6,12 @@
 
 1. Ouvrir un terminal et se positionner dans le répertoire du Dockerfile
 2. Saisir la commande : 
-    - `docker build . mdevoldere/mysql:5.7`
+    - `docker build . mdevoldere/mariadb:11`
 
 ## Créer un conteneur
 
 1. Dans un terminal, saisir la commande :
- - `docker run -d -p 4057:3306 --name mdevoldere-mysql57 -v mysql57-data:/var/lib/mysql mdevoldere/mysql:5.7`
+ - `docker run -d -p 4057:3306 --name mdevoldere-mariadb11 -v mariadb11-data:/var/lib/mysql mdevoldere/mariadb:11`
 
  Remplacez le port 4057 par celui de votre choix.
 

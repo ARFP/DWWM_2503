@@ -9,9 +9,3 @@ ENV MARIADB_DATABASE=mydatabase
 ENV MARIADB_USER=mike
 # Mot de passe pour se connecter à la base de données
 ENV MARIADB_PASSWORD=1234
-
-# Mets à jour la liste des logiciels du conteneur
-RUN apt-get update  
-
-# Installer la couche SSH (pour sécuriser les connexions et permettre de se connecter au terminal à distance)
-RUN apt-get install -y --fix-missing openssh-server openssh-client
