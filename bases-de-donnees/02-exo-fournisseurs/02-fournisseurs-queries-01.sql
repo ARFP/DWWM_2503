@@ -11,7 +11,7 @@
 
 
 /* 4. Sélectionner le nom des produits, leur prix, et le nom du fournisseur associé */
-
+/* Ceux qui ont fait une jointure se sont cassé la tête pour rien */
 
 
 /* 5. Sélectionner le nom des produits, leur prix, et le nom du fournisseur pour chaque produit dont le prix est supérieur à la moyenne des prix des produits */
