@@ -19,6 +19,25 @@ Créer le conteneur :
 ![MLD](./exo-fournisseurs-MLD.png)
 
 
+```sql
+/* ajouter une colonne a article */
+ALTER table articles ADD COLUMN prix INT NOT NULL DEFAULT '0';
+
+ 
+/* mise a jour des prix */
+UPDATE articles set prix=120 WHERE codeA='A0000001';
+UPDATE articles set prix=50 WHERE codeA='A0000002';
+UPDATE articles set prix=10 WHERE codeA='A0000003';
+UPDATE articles set prix=1 WHERE codeA='A0000004';
+UPDATE articles set prix=12 WHERE codeA='A0000005';
+UPDATE articles set prix=500 WHERE codeA='A0000006';
+UPDATE articles set prix=20 WHERE codeA='A0000007';
+UPDATE articles set prix=40 WHERE codeA='A0000008';
+UPDATE articles set prix=1.5 WHERE codeA='A0000009';
+UPDATE articles set prix=3 WHERE codeA='A0000010';
+
+```
+
 ## Requêtes à implémenter 
 
 /* 1. Sélectionner tous les employés (codeEmpl, nom, salaire) triés par nom et par ordre alphabétique */ 
