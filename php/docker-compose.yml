@@ -1,9 +1,8 @@
-version: '3.7'
-name: mdevoldere-lamp
+name: mdevoldere-php-2503
 services: 
   db:
     image: mariadb:11
-    container_name: mdevoldere-db-mysql
+    container_name: mdevoldere-php-2503-mysql
     restart: always
     volumes:
       - db_data:/var/lib/mysql
@@ -17,13 +16,14 @@ services:
 
   web:
     image: "php:8.4-apache"
-    container_name: mdevoldere-lamp-apache2
+    container_name: mdevoldere-php-2503-apache2
     restart: always
     depends_on: ['db']
     ports: ['80:80']
     links: ['db:db']
     volumes:
-      - './www:/var/www/html'
+      - './public:/var/www/html'
+      - './src:/var/www/src'
     environment:
       MYSQL_DB_HOST: db
       MYSQL_DATABASE: test
@@ -32,7 +32,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2
-    container_name: mdevoldere-lamp-phpmyadmin
+    container_name: mdevoldere-php-2503-phpmyadmin
     restart: always
     depends_on: ['db']
     ports: ['1200:80']

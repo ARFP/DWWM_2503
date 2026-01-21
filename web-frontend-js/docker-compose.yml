@@ -1,0 +1,9 @@
+name: mdevoldere-js-2503
+services: 
+  web:
+    image: "php:8.4-apache"
+    container_name: mdevoldere-js-2503-apache2
+    restart: always
+    ports: ['8000:80']
+    volumes:
+      - './:/var/www/html'

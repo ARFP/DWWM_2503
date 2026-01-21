@@ -1,0 +1,16 @@
+{
+    "name": "mdevoldere/dwwm_2503_php",
+    "license": "gpl3-or-later",
+    "autoload": {
+        "psr-4": {
+            "Mdevoldere\\Dwwm2503Php\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MDevoldere205",
+            "email": "10086604+mdevoldere@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
