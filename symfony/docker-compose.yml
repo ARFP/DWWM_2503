@@ -1,13 +1,13 @@
-name: mdevoldere-symfony-2503
+name: myapi-symfony-2503
 services: 
   db:
     image: mariadb:11
-    container_name: mdevoldere-symfony-2503-mysql
+    container_name: myapi-symfony-2503-mysql
     restart: always
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: db_myapi
       MYSQL_USER: user 
       MYSQL_PASSWORD: user
       MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
@@ -15,7 +15,7 @@ services:
 
   web:
     # image: "php:8.4-apache"
-    container_name: mdevoldere-symfony-2503-apache2
+    container_name: myapi-symfony-2503-apache2
     build: .
     restart: always
     depends_on: ['db']
@@ -25,13 +25,13 @@ services:
       - './myapi/:/var/www/html'
     environment:
       MYSQL_DB_HOST: db
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: db_myapi
       MYSQL_USER: user 
       MYSQL_PASSWORD: user
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2
-    container_name: mdevoldere-symfony-2503-phpmyadmin
+    container_name: myapi-symfony-2503-phpmyadmin
     restart: always
     depends_on: ['db']
     ports: ['1200:80']
