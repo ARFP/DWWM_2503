@@ -131,7 +131,7 @@ volumes:
 
 ```
 
-## Analyse du fichier conf/000-default.conf
+## conf/000-default.conf
 
 ```apache
 <VirtualHost *:80>
@@ -143,6 +143,12 @@ volumes:
     # Tout ce qui est en dehors de ce répertoire n'as pas accessible depuis le navigateur
     # Il pointe sur le dossier public de notre future installation Symfony
 	DocumentRoot /var/www/html/public
+
+	<Directory /var/www/html/public>
+    AllowOverride None
+    Require all granted
+    FallbackResource /index.php
+  </Directory>
 </VirtualHost>
 ```
 
@@ -163,3 +169,64 @@ L'installation de Symfony est terminée
 
 ## Installation des dépendances Symfony
 
+```sh
+composer require api 
+composer require symfony/apache-pack
+``` 
+
+Cette commande va installer les dépendances nécessaires pour un projet d'API Rest.
+
+Une fois les dépendances installées, accéder à l'url [http://localhost:8000/index.php/api/](http://localhost:8000/index.php/api/). Vous devriez voir une page ayant pour titre "Hello API Platform.
+
+Le projet étant destiné à n'accueillir qu'une API, nous allons le configurer pour que l'adresse de base [http://localhost:8000/](http://localhost:8000/) pointe directement sur l'API.
+
+Ouvrir le fichier `myapi/config/routes/api_platform.yaml`
+
+Puis commenter la ligne `prefix: /api` en la prefixant avec un hashtag comme ceci : `# prefix: /api`.
+
+# Configurer et créer la base de données
+
+Ouvrir le fichier `myapi/.env`
+
+Commenter la ligne `DATABASE_URL="postgre.....
+
+et ajouter en dessous la ligne suivante : 
+
+`DATABASE_URL="mysql://user:user@127.0.0.1:3306/db_myapi?serverVersion=11.8-MariaDB&charset=utf8mb4"`
+
+Direction le terminal du conteneur Web :
+
+```bash
+cd /var/www/html
+php bin/console doctrine:database:create
+```
+
+## Créer la 1ère entité.
+
+
+```bash
+cd /var/www/html
+php bin/console  make:entity
+```
+
+## Sauvegarder les changements
+
+```bash
+cd /var/www/html
+php bin/console  make:migration
+php bin/console doctrine:migrations:migrate
+```
+
+# Autres commandes de migrations : 
+
+
+```bash
+# Afficher la version de la migration en cours
+php bin/console doctrine:migrations:current   
+# Afficher la version de la dernière migration  
+php bin/console doctrine:migrations:latest   
+# Afficher la liste de toutes les migrations et leurs statuts  
+php bin/console doctrine:migrations:list     
+# Afficher des informations sur l'état actuel des migrations et autres   
+php bin/console doctrine:migrations:status      
+```
