@@ -78,6 +78,8 @@ services:
     container_name: myapi-symfony-2503-mysql
     # Redémarer automatiquement le service
     restart: always
+    # Port d'écoute 
+    ports: ['3306:3306']
     # Volumes volume_name:/container/path
     # db_data pointe sur le répertoire de travail de mysql
     volumes:
@@ -192,7 +194,7 @@ Commenter la ligne `DATABASE_URL="postgre.....
 
 et ajouter en dessous la ligne suivante : 
 
-`DATABASE_URL="mysql://user:user@127.0.0.1:3306/db_myapi?serverVersion=11.8-MariaDB&charset=utf8mb4"`
+`DATABASE_URL="mysql://user:user@127.0.0.1:3306/db_myapi?serverVersion=11.8.5-MariaDB&charset=utf8mb4"`
 
 Direction le terminal du conteneur Web :
 
