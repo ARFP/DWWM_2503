@@ -194,7 +194,7 @@ Commenter la ligne `DATABASE_URL="postgre.....
 
 et ajouter en dessous la ligne suivante : 
 
-`DATABASE_URL="mysql://user:user@127.0.0.1:3306/db_myapi?serverVersion=11.8.5-MariaDB&charset=utf8mb4"`
+`DATABASE_URL="mysql://user:user@db:3306/db_myapi?serverVersion=11.8.5-MariaDB&charset=utf8mb4"`
 
 Direction le terminal du conteneur Web :
 
@@ -208,14 +208,15 @@ php bin/console doctrine:database:create
 
 ```bash
 cd /var/www/html
-php bin/console  make:entity
+composer require symfony/maker-bundle --dev
+php bin/console make:entity
 ```
 
 ## Sauvegarder les changements
 
 ```bash
 cd /var/www/html
-php bin/console  make:migration
+php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
@@ -232,3 +233,4 @@ php bin/console doctrine:migrations:list
 # Afficher des informations sur l'état actuel des migrations et autres   
 php bin/console doctrine:migrations:status      
 ```
+
