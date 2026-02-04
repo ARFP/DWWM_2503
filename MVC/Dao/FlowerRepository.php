@@ -2,6 +2,9 @@
 
 require_once '../Models/Flower.php';
 
+/**
+ * Repository : Reque^petes pour ajouter, modifier, supprimer et lire les données d'une base de données
+ */
 class FlowerRepository 
 {
 
