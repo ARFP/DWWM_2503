@@ -1,0 +1,22 @@
+/*
+Theme Name: MonTheme
+*/
+
+h1, h2 {
+    color: red;
+}
+
+.home header h2 {
+    color: darkorchid;
+}
+
+.single header h2 {
+    color: green;
+}
+
+
+.montheme-article {
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
+}
