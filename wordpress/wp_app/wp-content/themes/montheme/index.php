@@ -1,22 +1,30 @@
 <?php
 get_header();
+?>
 
+<section class="flex">
+
+<?php 
     if(have_posts()): // si l'url appelé correspond à du contenu  (article, page, auteur, catégorie...)
         while(have_posts()): // pour chaque élément trouvé... 
             the_post(); // on charge les données du contenu
     ?>
-        <h1><?php the_title(); // affichage du titre ?></h1>
-        <article class="montheme-article">
-            <?php the_excerpt(); // extrait du post ?> 
-        </article>
-        <hr>
-        <article>
-            <?php the_content(); // contenu du post ?> 
+        <article class="montheme-article"> 
+            <h1><?php the_title(); // affichage du titre ?></h1>
+            <?php the_post_thumbnail('thumbnail'); ?>
+            <div>
+                <?php the_excerpt(); // extrait du post ?> 
+            </div>
+            
         </article>
     <?php
         endwhile;
     else: 
         echo 'Aucun contenu';
     endif;
+?>
 
+</section>
+
+<?php 
 get_footer();

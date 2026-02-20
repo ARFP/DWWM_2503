@@ -19,4 +19,20 @@ h1, h2 {
     border: 1px solid red;
     padding: 10px;
     margin-bottom: 20px;
+    width: 30%;
+    text-align: center;
 }
+
+.montheme-article div {
+    text-align: justify;
+}
+
+.flex {
+    display: flex;
+    /*flex-flow: row wrap;*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
