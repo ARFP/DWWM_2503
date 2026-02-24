@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<h1>INDEX.PHP</h1>
+<h1>FRONT-PAGE.PHP</h1>
 <section class="flex">
 
 <?php 
@@ -26,6 +26,11 @@ get_header();
 ?>
 
 </section>
+
+<aside>
+    <h3>SIDEBAR</h3>
+    <h4>Widgets</h4>
+</aside>
 
 <?php 
 get_footer();

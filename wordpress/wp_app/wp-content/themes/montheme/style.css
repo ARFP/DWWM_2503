@@ -36,3 +36,43 @@ h1, h2 {
 }
 
 
+/* MENU */
+.menu, .sub-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu {
+    display:flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.sub-menu {
+    display: none;
+}
+
+.menu a {
+    display: block;
+    text-decoration: none;
+    padding: 1rem;
+    border: .1rem solid red;
+    background-color: #00000010;
+    transition: all ease .8s;
+}
+
+.menu a:hover {
+    background-color: aqua;
+    transform: rotate(0deg);
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+    position: absolute;
+}
+
+.sub-menu .menu-item {
+    margin-top: 10px;
+}
+
+/* FIN MENU */
