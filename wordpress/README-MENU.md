@@ -45,7 +45,28 @@ Une fois le code précédent implémenté, direction l'administration de votre W
 
 ## "Responsiver" le menu
 
-Une fois le menu déclaré dans votre thème et paramétré dans l'administration de Wordpress.
+Une fois le menu déclaré dans votre thème et paramétré dans l'administration de Wordpress, il aparaitra à l'emplacement souhaité et le code HTML ressemblera à :
+
+```html
+<div class="menu-toto-container">
+    <ul id="menu-toto" class="menu">
+        <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-37">
+            <a href="/">Accueil</a>
+        </li>
+        <li id="menu-item-40" class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item menu-item-has-children menu-item-40">
+            <a href="/category/etoiles/" aria-current="page">Étoiles</a>
+            <ul class="sub-menu">
+                <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-38">
+                    <a href="/le-soleil/">Le Soleil</a>
+                </li>
+                <li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-41">
+                    <a href="/toto-is-back/">Toto is back again</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+```
 
 Le code CSS suivant est à ajouter dans la feuille de style de votre thème
 
@@ -161,4 +182,5 @@ Disparition du bouton : Le #menuToggle devient inutile et est masqué (display: 
 - La liste .menu repasse en flex-direction: row pour aligner les liens côte à côte.
 - Sous-menus (Sub-menu) :
     - Ils sont cachés par défaut.
-    - Ils n'apparaissent que lorsqu'on survole l'élément parent (.menu-item:hover .sub-menu). L'utilisation de position: absolute permet au sous-menu de se superposer au contenu.
+    - Ils n'apparaissent que lorsqu'on survole l'élément parent (.menu-item:hover .sub-menu). 
+    - L'utilisation de position: absolute permet au sous-menu de se superposer au contenu.
