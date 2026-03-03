@@ -1,6 +1,3 @@
-
-
-
 ## Partie 1 — Créer un thème WordPress from scratch
 
 Cette section décrit, pas à pas, comment créer un thème WordPress minimal depuis zéro et le tester dans l'environnement local monté par Docker (`./wp_app`).
@@ -116,12 +113,7 @@ add_action('after_setup_theme', 'montheme_setup');
 
 ### 4) Test et activation
 1. Placer le dossier du thème dans `./wp_app/wp-content/themes/mon-theme/`.
-2. Démarrer les conteneurs Docker (voir `docker-compose.yml`) :
-
-```powershell
-docker compose up -d
-```
-
+2. Démarrer les conteneurs Docker (voir `docker-compose.yml`)
 3. Accéder à l'administration WordPress, aller dans Apparence → Thèmes et activer `Mon Thème`.
 4. Vérifier la page d'accueil, les articles et les pages.
 

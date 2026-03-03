@@ -10,11 +10,11 @@ get_header();
         while(have_posts()): // pour chaque élément trouvé... 
             the_post(); // on charge les données du contenu
     ?>
-        <article class="montheme-article"> 
+        <article class="montheme-article-full"> 
             <h1><?php the_title(); // affichage du titre ?></h1>
             <?php the_post_thumbnail('thumbnail'); ?>
             <div>
-                <?php the_excerpt(); // extrait du post ?> 
+                <?php the_content(); // contenu du post ?> 
             </div>
             
         </article>

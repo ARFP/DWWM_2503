@@ -6,6 +6,7 @@
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/monscript.js" defer></script>
 </head>
 <body <?php body_class(); ?>>
 
@@ -15,9 +16,10 @@
 <header class="">
     <h1><?php bloginfo('name'); ?></h1>
     <h2><?php bloginfo('description'); ?></h2>
+    <a href="#" id="menuToggle">≡</a>
 </header>
 
-<nav>
+<nav class="nav-menu">
 <?php wp_nav_menu([
     'theme_location' => 'main'
 ]) ?>
