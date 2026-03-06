@@ -9,7 +9,7 @@ Dans le fichier `functions.php` de votre thème :
 
 /**
  * Déclare un menu dont l'identifiant est 'main' et le nom est 'Menu Principal'
- * identifiant:; utilisé dans le code pour faire réféence à cet élément
+ * identifiant: utilisé dans le code pour faire réféence à cet élément
  * nom : utilisé par Wordpress pour l'affichage dans l'administration
 */
 function md_theme_menu_sidebar() {
@@ -179,7 +179,7 @@ Dès que l'écran dépasse 768px, le comportement change radicalement :
 Disparition du bouton : Le #menuToggle devient inutile et est masqué (display: none).
 
 **Menu Horizontal :** 
-- La liste .menu repasse en flex-direction: row pour aligner les liens côte à côte.
+- La liste .menu repasse en `flex-direction: row` pour aligner les liens côte à côte.
 - Sous-menus (Sub-menu) :
     - Ils sont cachés par défaut.
     - Ils n'apparaissent que lorsqu'on survole l'élément parent (.menu-item:hover .sub-menu). 
