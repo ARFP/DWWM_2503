@@ -2,7 +2,7 @@
 </main>
 
 <footer>
-    Copyright CRM 2026 - 
+    Copyright CRM 1947 - <?=date('Y'); ?>
     <?php 
         wp_nav_menu([
             'theme_location' => 'foot'

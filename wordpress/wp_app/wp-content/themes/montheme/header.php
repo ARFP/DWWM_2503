@@ -13,7 +13,9 @@
 <?php wp_body_open(); ?>
 
 
-<header class="">
+<header class="site-header">
+    <img id="astro" src="<?php echo get_stylesheet_directory_uri(); ?>/astro.webp" alt="">
+    <img id="asteroid" src="<?php echo get_stylesheet_directory_uri(); ?>/asteroid.png" alt="">
     <h1><?php bloginfo('name'); ?></h1>
     <h2><?php bloginfo('description'); ?></h2>
     <a href="#" id="menuToggle">≡</a>

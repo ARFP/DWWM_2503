@@ -3,7 +3,6 @@ get_header();
 ?>
 
 <h1>SINGLE.PHP</h1>
-<h2>Affichage d'un article</h2>
 <section class="flex">
 
 <?php 
@@ -33,13 +32,27 @@ get_header();
                     <p>modifié le <?php the_modified_date(); ?> par <?php the_modified_author(); ?></p>
                 </aside>
             </footer>
+            <aside>
+                <?php comments_template(); ?>
+            </aside>
         </article>
     <?php
         endwhile;
     else: 
         echo 'Aucun contenu';
     endif;
+
+    
 ?>
+
+    <div class="pagination">
+        <div class="pagination-previous">
+            <?php previous_post_link(); ?>
+        </div>
+        <div class="pagination-next">
+            <?php next_post_link();  ?>
+        </div>
+    </div>
 
 </section>
 

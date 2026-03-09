@@ -43,7 +43,23 @@ get_header();
     else: 
         echo 'Aucun contenu';
     endif;
+
+    // posts_nav_link();
 ?>
+
+<hr>
+    <div class="pagination">
+        <div class="pagination-previous">
+            <?php previous_posts_link('Contenu précédent'); ?>
+        </div>
+        <div class="pagination-next">
+            <?php next_posts_link('Contenu suivant');  ?>
+        </div>
+    </div>
+
+    <div>
+        <?php the_posts_pagination(); ?>
+    </div>
 
 </section>
 

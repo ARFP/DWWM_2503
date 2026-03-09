@@ -11,7 +11,10 @@ get_header();
             the_post(); // on charge les données du contenu
     ?>
         <article class="montheme-article-full"> 
-            <h1><?php the_title(); // affichage du titre ?></h1>
+            <header>
+                <h1><?php the_title(); // affichage du titre ?></h1>
+            </header>
+            
             <?php the_post_thumbnail('thumbnail'); ?>
             <div>
                 <?php the_content(); // contenu du post ?> 
@@ -30,6 +33,9 @@ get_header();
 <aside>
     <h3>SIDEBAR</h3>
     <h4>Widgets</h4>
+    <?php 
+        dynamic_sidebar('main-sidebar');
+    ?>
 </aside>
 
 <?php 

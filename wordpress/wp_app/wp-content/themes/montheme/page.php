@@ -31,6 +31,15 @@ get_header();
     endif;
 ?>
 
+<div class="pagination">
+    <div class="pagination-previous">
+        <?php previous_post_link(); ?>
+    </div>
+    <div class="pagination-next">
+        <?php next_post_link();  ?>
+    </div>
+</div>
+
 </section>
 
 <?php 
