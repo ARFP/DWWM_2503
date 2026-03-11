@@ -1,0 +1,11 @@
+name: mdevoldere-nodejs
+services:
+  web:
+    container_name: mdevoldere-nodejs-app1
+    build: .
+    volumes:
+      - ./src/:/app/
+    ports:
+      - "3000:3000"
+
+  
