@@ -1,6 +1,6 @@
 ## Partie 1 — Créer un thème WordPress from scratch
 
-Cette section décrit, pas à pas, comment créer un thème WordPress minimal depuis zéro et le tester dans l'environnement local monté par Docker (`./wp_app`).
+Cette section décrit, pas à pas, comment créer un thème WordPress minimal depuis zéro et le tester dans l'environnement local monté par Docker.
 
 ### 1) Arborescence minimale recommandée
 Crée le dossier suivant dans le projet (chemin local monté dans le conteneur) :
@@ -42,7 +42,7 @@ body { margin:0; padding:0; }
 h1 { color: red; }
 ```
 
-**functions.php** (charger assets et activer des supports) :
+**functions.php** (activer des fonctionnalités, créer des types personnalisés...) :
 
 ```php
 <?php
@@ -109,19 +109,12 @@ add_action('after_setup_theme', 'montheme_setup');
 - Séparer les parties réutilisables avec `get_template_part()` (ex. `template-parts/content.php`).
 - Prévoir l'internationalisation : appeler `load_theme_textdomain()` dans `after_setup_theme`.
 - Ne pas oublier d'ajouter des styles et scripts versionnés et d'utiliser `wp_enqueue_*` pour les charger.
-- Si tu veux un thème block / FSE (Full Site Editing), la structure diffère (fichier `theme.json`, templates HTML). Dis-moi si tu préfères cette option.
+
 
 ### 4) Test et activation
-1. Placer le dossier du thème dans `./wp_app/wp-content/themes/mon-theme/`.
+1. Placer le dossier du thème dans `/wp-content/themes/mon-theme/`.
 2. Démarrer les conteneurs Docker (voir `docker-compose.yml`)
 3. Accéder à l'administration WordPress, aller dans Apparence → Thèmes et activer `Mon Thème`.
 4. Vérifier la page d'accueil, les articles et les pages.
 
 ---
-
-**TODO :**
-- générer ce starter minimal dans `./wp_app/wp-content/themes/mon-theme/` ;
-- créer une version FSE (block theme) à la place ;
-- ajouter des outils (Theme Check, Query Monitor) au projet pour faciliter les tests.
-
-
