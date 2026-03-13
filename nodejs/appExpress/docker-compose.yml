@@ -1,0 +1,15 @@
+name: express-nodejs
+services:
+  web:
+    image: node:24.14.0-alpine
+    container_name: express-nodejs-app
+    ports:
+      - "3334:80"
+    volumes:
+      - ./src/:/app/
+    working_dir: /app
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    command: sh
+  

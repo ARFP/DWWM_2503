@@ -1,0 +1,13 @@
+{
+  "name": "olivier-app",
+  "version": "1.0.0",
+  "description": "A mega cool Node App by Olivier",
+  "license": "ISC",
+  "author": "mdevoldere",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  }
+}
