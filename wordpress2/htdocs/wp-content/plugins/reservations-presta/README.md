@@ -143,5 +143,3 @@ function mde_affiche_details_final($content) { ... }
 2. **Stockage** : WordPress enregistre "30" dans une petite boîte nommée `_presta_prix` (`mde_save_details_prestation`).
 3. **Lecture** : Quand un client visite la page, le plugin va chercher le "30" dans la boîte (`get_post_meta`).
 4. **Affichage** : Le plugin prépare un joli rectangle rose avec écrit "Tarif : 30 €" (`mde_affiche_details_final`).
-
-Souhaitez-vous que je vous aide à créer une petite **fiche d'exercice** où les élèves doivent ajouter un troisième champ (par exemple : "Produits utilisés") en suivant ce modèle ?
