@@ -1,0 +1,54 @@
+.breadcrumbs {
+    display: flex;
+    list-style: none;
+    padding: 10px 15px;
+    margin: 0;
+    background: #f5f5f5;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajout du séparateur via CSS (plus propre que dans le HTML) */
+.breadcrumbs li:not(:last-child)::after {
+    content: "»";
+    margin: 0 10px;
+    color: #999;
+}
+
+.breadcrumbs a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.breadcrumbs .breadcrumb_last {
+    color: #666;
+    font-weight: bold;
+}
+
+.breadcrumbs li a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+/* On s'assure que les liens de catégories WordPress se comportent comme les autres */
+.breadcrumbs li .post-categories {
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.breadcrumbs li .post-categories li {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+    .breadcrumbs {
+        overflow: hidden;
+        flex-wrap: wrap;
+    }
+}
