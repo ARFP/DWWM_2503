@@ -1,0 +1,65 @@
+/* Mobile First */
+.navbar {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    position: relative;
+}
+
+.nav-links, .submenu {
+    list-style: none;
+    display: none;
+    padding: 0;
+}
+
+.nav-links li {
+    border-bottom: 1px solid #444;
+}
+
+.nav-links a, .submenu-label {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Affichage menu mobile */
+.menu-toggle:checked~.nav-links {
+    display: block;
+}
+
+.sub-toggle:checked~.submenu {
+    display: block;
+    background: #444;
+}
+
+/* Cacher les checkboxes */
+.menu-toggle, .sub-toggle {
+    display: none;
+}
+
+/* Desktop (Min-width: 768px) */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-links {
+        margin: 0;
+        display: flex;
+    }
+
+    .nav-links li {
+        border: none;
+        position: relative;
+    }
+
+    .has-submenu:hover .submenu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        background: #333;
+        min-width: 150px;
+    }
+}

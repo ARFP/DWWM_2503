@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive MENU : Approche mobile first</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li class="has-submenu">
+                    <input type="checkbox" id="sub-toggle" class="sub-toggle">
+                    <label for="sub-toggle" class="submenu-label">Pokémon ▼</label>
+                    <ul class="submenu">
+                        <li><a href="#">Type Feu</a></li>
+                        <li><a href="#">Type Eau</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Toto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Titre de la page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vero veniam dolor quidem quod est,
+            distinctio doloremque ut soluta molestiae quas cum provident animi suscipit quae eius quaerat itaque error.
+        </p>
+    </main>
+</body>
+
+</html>

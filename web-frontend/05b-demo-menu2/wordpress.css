@@ -1,0 +1,34 @@
+/* --- MOBILE FIRST --- */
+.main-navigation ul { list-style: none; padding: 0; margin: 0; display: none; }
+.main-navigation.toggled ul.nav-menu { display: block; background: #333; }
+
+.main-navigation a { display: block; padding: 12px; color: white; text-decoration: none; }
+.main-navigation li { border-bottom: 1px solid #444; }
+
+/* Sous-menus WordPress */
+.main-navigation .sub-menu { display: none; background: #444; }
+
+/* Affichage du sous-menu si le parent est cliqué/activé */
+.main-navigation .menu-item-has-children.open > .sub-menu { 
+    display: block; 
+}
+
+/* --- DESKTOP (768px+) --- */
+@media (min-width: 768px) {
+    .menu-toggle { display: none; }
+    
+    .main-navigation ul.nav-menu { 
+        display: flex; background: #333; 
+    }
+
+    .main-navigation li { border: none; position: relative; }
+
+    /* Affichage au survol sur Desktop */
+    .main-navigation .menu-item-has-children:hover > .sub-menu { 
+        display: block; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        min-width: 200px; 
+    }
+}
