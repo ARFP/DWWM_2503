@@ -190,4 +190,223 @@ Si un client cherche "Massage" chez une coiffeuse, il faut gérer le cas où rie
 
 ---
 
+# Les réservations
 
+Voici la suite logique pour transformer votre plugin en un véritable outil de gestion. Nous allons ajouter le **CPT Réservation**, les **champs de données** (date, heure, prestations choisies) et le **formulaire client**.
+
+### 1. Déclarer le CPT "Réservation"
+Ajoutez ceci à votre fichier principal pour créer le dossier de stockage des rendez-vous.
+
+```php
+// 8. Créer le type de contenu "Réservation"
+add_action('init', 'mde_creer_cpt_reservation');
+function mde_creer_cpt_reservation() {
+    register_post_type('reservation', array(
+        'labels' => array('name' => 'Réservations', 'singular_name' => 'Réservation'),
+        'public' => false, 
+        'show_ui' => true,  
+        'menu_icon' => 'dashicons-calendar-alt',
+        'supports' => array('title') // Le titre sera le nom du client
+    ));
+}
+```
+
+### 2. Le Formulaire de Réservation (Shortcode)
+Ce code permet d'afficher le formulaire n'importe où (ex: sur une page "Réserver") en tapant `[mde_formulaire_reservation]`.
+
+```php
+add_shortcode('mde_formulaire_reservation', 'mde_genere_formulaire');
+
+function mde_genere_formulaire() {
+    $prestations = get_posts(array('post_type' => 'prestation', 'posts_per_page' => -1));
+    
+    ob_start(); ?>
+    <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" style="background:#f9f9f9; padding:20px; border-radius:10px;">
+        <input type="hidden" name="action" value="mde_soumettre_reservation">
+        
+        <h3>1. Choisissez vos prestations</h3>
+        <?php foreach($prestations as $p): ?>
+            <label style="display:block; margin-bottom:5px;">
+                <input type="checkbox" name="choix_presta[]" value="<?php echo $p->ID; ?>"> 
+                <?php echo $p->post_title; ?> (+<?php echo get_post_meta($p->ID, '_presta_prix', true); ?>€)
+            </label>
+        <?php endforeach; ?>
+
+        <h3>2. Date et Heure</h3>
+        <input type="date" name="res_date" required>
+        <input type="time" name="res_heure" required>
+
+        <h3>3. Vos informations</h3>
+        <input type="text" name="client_nom" placeholder="Votre nom" required style="width:100%; margin-bottom:10px;">
+        
+        <button type="submit" style="background:#db2777; color:white; padding:10px 20px; border:none; cursor:pointer; width:100%;">Confirmer la réservation</button>
+    </form>
+    <?php
+    return ob_get_clean();
+}
+```
+
+### 3. Traitement et Calcul (La "Cerveau" du plugin)
+Ce bloc intercepte la validation du formulaire, calcule les totaux et crée la réservation dans l'admin.
+
+```php
+add_action('admin_post_nopriv_mde_soumettre_reservation', 'mde_traiter_reservation');
+add_action('admin_post_mde_soumettre_reservation', 'mde_traiter_reservation');
+
+function mde_traiter_reservation() {
+    if (!isset($_POST['choix_presta'])) wp_die('Veuillez choisir au moins une prestation.');
+
+    $nom = sanitize_text_field($_POST['client_nom']);
+    $prestations_ids = $_POST['choix_presta'];
+    
+    // Calculs
+    $total_prix = 0;
+    foreach ($prestations_ids as $id) {
+        $total_prix += (int) get_post_meta($id, '_presta_prix', true);
+    }
+
+    // Création de la réservation (le CPT)
+    $res_id = wp_insert_post(array(
+        'post_title'  => $nom . ' - ' . $_POST['res_date'],
+        'post_type'   => 'reservation',
+        'post_status' => 'publish'
+    ));
+
+    // Sauvegarde des détails
+    update_post_meta($res_id, '_res_prix_total', $total_prix);
+    update_post_meta($res_id, '_res_date', $_POST['res_date']);
+    update_post_meta($res_id, '_res_heure', $_POST['res_heure']);
+    update_post_meta($res_id, '_res_details', implode(', ', $prestations_ids));
+
+    wp_redirect(home_url('/merci')); // Rediriger vers une page de succès
+    exit;
+}
+```
+
+---
+
+Pour que la coiffeuse puisse gérer ses rendez-vous, nous allons personnaliser la liste des réservations dans l'administration de WordPress. Par défaut, elle ne verrait que le titre. Nous allons ajouter des colonnes pour le **Prix**, la **Date** et l'**Heure**.
+
+Ajoutez ce code dans votre fichier principal de plugin :
+
+### 1. Ajouter les colonnes personnalisées
+On dit à WordPress : "Ajoute ces nouvelles cases dans le tableau des réservations".
+
+```php
+// 9. Ajouter les colonnes dans l'administration
+add_filter('manage_reservation_posts_columns', 'mde_colonnes_reservation');
+function mde_colonnes_reservation($columns) {
+    $columns['res_date'] = 'Date du RDV';
+    $columns['res_heure'] = 'Heure';
+    $columns['res_prix'] = 'Prix Total';
+    return $columns;
+}
+```
+
+### 2. Remplir les colonnes avec les données
+C'est ici qu'on va chercher les "Meta" (les données cachées) pour les afficher.
+
+```php
+// 10. Remplir les colonnes avec les données de la base
+add_action('manage_reservation_posts_custom_column', 'mde_contenu_colonnes_reservation', 10, 2);
+function mde_contenu_colonnes_reservation($column, $post_id) {
+    switch ($column) {
+        case 'res_date':
+            echo esc_html(get_post_meta($post_id, '_res_date', true));
+            break;
+        case 'res_heure':
+            echo esc_html(get_post_meta($post_id, '_res_heure', true));
+            break;
+        case 'res_prix':
+            echo esc_html(get_post_meta($post_id, '_res_prix_total', true)) . ' €';
+            break;
+    }
+}
+```
+
+### 3. Rendre les colonnes triables
+Pour que la coiffeuse puisse voir ses prochains rendez-vous en premier.
+
+```php
+// 11. Permettre de trier par date
+add_filter('manage_edit-reservation_sortable_columns', 'mde_tri_colonnes_reservation');
+function mde_tri_colonnes_reservation($columns) {
+    $columns['res_date'] = 'res_date';
+    return $columns;
+}
+```
+
+---
+
+### Explication pédagogique pour vos élèves
+
+Le tableau de bord de WordPress fonctionne comme une feuille de calcul :
+1. **Le Filter (`manage_..._columns`)** : C'est l'en-tête du tableau. On définit le nom des colonnes.
+2. **L'Action (`manage_..._custom_column`)** : C'est le contenu des lignes. Pour chaque réservation, WordPress appelle cette fonction pour savoir quoi écrire dans la case.
+3. **Le "Switch"** : On utilise un `switch` car WordPress passe dans cette fonction pour chaque colonne. On lui dit : "Si c'est la colonne prix, affiche le prix, si c'est la date, affiche la date".
+
+### Ce qui a été construit :
+* Un catalogue de prestations avec prix et durée.
+* Un système de recherche et de tri pour les clients.
+* Un formulaire de réservation qui calcule le prix total.
+* **Un tableau de bord de gestion pour la coiffeuse.**
+
+
+### envoi d'email 
+
+Pour finaliser l'outil, nous allons utiliser la fonction `wp_mail()`. C'est le "service de la poste" interne de WordPress.
+
+Voici le code à ajouter dans votre fonction `mde_traiter_reservation`, juste avant la redirection finale :
+
+### 1. Le code d'envoi d'e-mail
+
+```php
+// ... (juste après les update_post_meta dans mde_traiter_reservation)
+
+// Préparation de l'e-mail
+$destinataire = get_option('admin_email'); // L'e-mail de la coiffeuse (admin du site)
+$sujet = "Nouvelle réservation : " . $nom;
+
+$message = "Bonjour,\n\n";
+$message .= "Une nouvelle réservation a été effectuée :\n";
+$message .= "Client : " . $nom . "\n";
+$message .= "Date : " . $_POST['res_date'] . "\n";
+$message .= "Heure : " . $_POST['res_heure'] . "\n";
+$message .= "Prix total : " . $total_prix . " €\n\n";
+$message .= "Connectez-vous à l'administration pour voir les détails.";
+
+$headers = array('Content-Type: text/plain; charset=UTF-8');
+
+// Envoi effectif
+wp_mail($destinataire, $sujet, $message, $headers);
+
+// ... (votre wp_redirect existant)
+```
+
+---
+
+### 2. Points techniques importants
+
+* **`get_option('admin_email')`** : Très pratique, cela récupère automatiquement l'adresse e-mail configurée dans les réglages généraux de WordPress. Pas besoin de l'écrire en dur !
+* **`wp_mail()`** : Cette fonction est une enveloppe autour de la fonction PHP `mail()`, mais elle est plus robuste car elle permet d'utiliser des filtres et des en-têtes (headers) WordPress.
+* **Le format** : Ici, nous envoyons un e-mail au format "Texte brut" (`text/plain`). C'est le plus simple pour commencer et cela évite que le message finisse en SPAM.
+
+---
+
+### 3. Note pour vos élèves (Test en Local)
+
+C'est un moment crucial pour l'apprentissage : **`wp_mail()` ne fonctionne pas par défaut sur un serveur local** (comme WAMP, MAMP ou LocalWP) sans configuration spécifique.
+
+> **Conseil pédagogique** : Expliquez-leur que pour envoyer de vrais e-mails depuis leur ordinateur, ils auraient besoin d'un plugin comme "WP Mail SMTP" ou d'un outil de capture d'e-mails comme **MailHog**. Sinon, le code est correct, mais l'e-mail ne "partira" pas réellement tant que le site n'est pas en ligne.
+
+### Félicitations !
+
+Votre plugin est maintenant un **écosystème complet** :
+1.  **Catalogue** (CPT Prestations)
+2.  **Affichage** (Templates personnalisés)
+3.  **Recherche/Tri** (WP_Query)
+4.  **Réservation** (Formulaire + Shortcode + wp_insert_post)
+5.  **Gestion** (Colonnes Admin personnalisées)
+6.  **Notification** (wp_mail)
+
+Souhaitez-vous que je vous aide à rédiger une **fiche récapitulative** des fonctions WordPress utilisées pour que vos élèves puissent réviser ?
