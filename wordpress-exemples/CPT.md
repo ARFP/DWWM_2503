@@ -1,4 +1,7 @@
-Code complet d'un plugin de "Réservation"
+# Plugin de "Réservation"
+
+- Custom Post Type
+- Shortcode
 
 ```php
 <?php
@@ -66,26 +69,22 @@ function mde_affiche_details_final($content) {
 }
 
 ```
-
 ---
 
-Voici une explication détaillée, bloc par bloc, du code que nous avons construit. C'est le guide idéal pour que vos élèves comprennent la logique derrière chaque ligne.
-
----
-
-### 1. L'en-tête (L'acte de naissance)
+### 1. L'en-tête 
 
 ```php
 /**
  * Plugin Name: Réservation Coiffure (Version mde_)
  * Description: Gestion des prestations avec prix, durée et bouton de réservation.
+ * Author: Prénom NOM
  */
 
 ```
 
 * **À quoi ça sert ?** C’est ce qui permet à WordPress de reconnaître que ce fichier est un plugin. Sans ces quelques lignes de commentaires, le plugin n'apparaîtra jamais dans la liste des extensions.
 
-### 2. Le CPT (Le nouveau meuble)
+### 2. Le CPT 
 
 ```php
 add_action('init', 'mde_creer_cpt_prestation');
@@ -99,7 +98,7 @@ function mde_creer_cpt_prestation() {
 * **`register_post_type`** : On définit le nom du tiroir ("Prestations") et son icône (les ciseaux).
 * **L'intérêt** : Cela sépare les services de la coiffeuse des articles de blog classiques.
 
-### 3. La Meta Box (Le formulaire de saisie)
+### 3. La Meta Box 
 
 ```php
 add_action('add_meta_boxes', 'mde_meta_details_prestation');
@@ -111,7 +110,7 @@ function mde_render_details($post) { ... }
 * **`mde_render_details`** : C'est la fonction qui "dessine" le formulaire HTML. On y trouve les balises `<label>` (le texte) et `<input>` (la case à remplir).
 * **`get_post_meta`** : Indispensable ! Cette fonction va chercher en base de données ce qui a été écrit précédemment pour l'afficher dans la case.
 
-### 4. La Sauvegarde (Le gardien)
+### 4. La Sauvegarde 
 
 ```php
 add_action('save_post', 'mde_save_details_prestation');
@@ -123,7 +122,7 @@ function mde_save_details_prestation($post_id) { ... }
 * **`update_post_meta`** : C'est ici que la magie opère. On prend ce qui a été tapé dans le formulaire (`$_POST`) et on l'enregistre définitivement dans la base de données de WordPress.
 * **`sanitize_text_field`** : Une sécurité vitale qui nettoie les données pour éviter qu'un pirate n'injecte du code malveillant.
 
-### 5. L'affichage final (La mise en scène)
+### 5. L'affichage final 
 
 ```php
 add_filter('the_content', 'mde_affiche_details_final');
@@ -142,4 +141,4 @@ function mde_affiche_details_final($content) { ... }
 1. **Saisie** : La coiffeuse tape "30€" dans le champ (`mde_render_details`).
 2. **Stockage** : WordPress enregistre "30" dans une petite boîte nommée `_presta_prix` (`mde_save_details_prestation`).
 3. **Lecture** : Quand un client visite la page, le plugin va chercher le "30" dans la boîte (`get_post_meta`).
-4. **Affichage** : Le plugin prépare un joli rectangle rose avec écrit "Tarif : 30 €" (`mde_affiche_details_final`).
+4. **Affichage** : Le plugin prépare un joli rectangle avec écrit "Tarif : 30 €" (`mde_affiche_details_final`).
