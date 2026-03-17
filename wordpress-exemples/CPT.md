@@ -16,6 +16,7 @@ function mde_creer_cpt_prestation() {
     register_post_type('prestation', array(
         'labels' => array('name' => 'Prestations', 'singular_name' => 'Prestation'),
         'public' => true,
+        'has_archive' => true,
         'menu_icon' => 'dashicons-scissors',
         'supports' => array('title', 'editor', 'thumbnail')
     ));
