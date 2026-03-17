@@ -21,6 +21,7 @@ function mde_cpt_prestation() {
             'add_new' => 'Ajouter'
         ],
         'public' => true,
+        'has_archive' => true,
         'menu_icon' => 'dashicons-reddit',
         'supports' => ['title', 'thumbnail', 'editor'],
     ];
@@ -93,6 +94,27 @@ function mde_afficher_details_front2($content) {
 */
 
 add_filter('the_content', 'mde_afficher_details_front');
+
+
+// 5. Affichage sur la page d'archive (la liste)
+
+function mde_afficher_details_archive( $content ) {
+    // On vérifie si on est sur une liste (archive) de prestations
+    if ( is_post_type_archive('prestation') || is_tax('prestation') ) {
+        $prix = get_post_meta( get_the_ID(), 'prestation_prix', true );
+        $duree = 0; //get_post_meta( get_the_ID(), '_presta_duree', true );
+
+        $info = '<p style="color: #db2777; font-weight: bold;">';
+        $info .= '⏱ ' . esc_html($duree) . ' | 💰 ' . esc_html($prix) . ' €';
+        $info .= '</p>';
+
+        return $info . $content;
+    }
+    return $content;
+}
+
+add_filter( 'the_excerpt', 'mde_afficher_details_archive' );
+add_filter( 'the_content', 'mde_afficher_details_archive' );
 
 
 /**
