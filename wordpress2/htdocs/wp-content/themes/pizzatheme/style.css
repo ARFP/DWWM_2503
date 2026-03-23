@@ -2,3 +2,168 @@
 Theme Name: Thème Pizza CRM
 Author: DWWM2503
 */
+
+:root {
+    --primary: #FFDE00;
+    --secondary: #B3A125;
+    --tertiary: #3B4CCA;
+    --fourth: #CC0000;
+    --fifth: #FF0000;
+    --header-top: 135px;
+}
+
+body {
+    /*display: grid;
+    grid-template-columns: 1fr 240px;
+    grid-template-rows: 120px 1fr 120px;
+    grid-template-areas: "H H"
+                         "M S"
+                         "F S";*/
+                         display: flex;
+                         flex-wrap: wrap;
+    max-width: 100%;
+    margin: 0;
+    background-color:black;
+   /* transition: all ease .4s;*/
+}
+
+@media (max-width:960px) {
+   /* body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 1fr 250px 120px;
+    grid-template-areas: "H"
+                         "M"
+                         "S"
+                         "F";
+    }*/
+}
+
+.wrapper {
+    flex: 1;
+    margin-top: var(--header-top);
+}
+
+.site-header {
+    grid-area: H;
+    width: 100%;
+}
+
+.site-main {
+    grid-area: M;
+}
+
+.site-aside {
+    grid-area: S;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 240px;
+    flex: 0 0 240px;
+    margin-top: var(--header-top);
+    background-color: var(--tertiary);
+    color: var(--primary);
+}
+
+.site-footer {
+    grid-area: F;
+    clear:left;
+    background-color: var(--tertiary);
+    color: var(--primary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary)
+}
+
+img {
+    max-width: 100%;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 120px;
+    transform: rotateY(180deg);
+}
+
+.site-header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--tertiary);
+    box-shadow: 0 0 20px black;
+    position: fixed;
+}
+
+.site-header::before {
+    border-radius: 50%;
+    position: absolute;
+    width: 130px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index:100;
+    content: '';
+    background-image: url('img/pikatchu2.jpg');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: contain;
+    transform: rotateY(180deg);
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0 0 20px;
+    color: var(--primary)
+}
+
+header > nav{
+    
+    width: 100%;
+}
+
+.site-navigation {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.menu a {
+    display:block;
+    padding: 10px;
+    color: var(--primary);
+    background-color: #00000020;
+}
+
+.menu a:hover {
+    color: var(--secondary);
+    background-color: #FFFFFF20;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+
+/* SURCHARGES WP */
+
+.wp-calendar-table{
+    color: var(--primary);
+}
+
+.wp-calendar-table a {
+    color: var(--primary);
+    display:block;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    padding: 3px;
+}
+
+.wp-calendar-table th {
+    color: black;
+}

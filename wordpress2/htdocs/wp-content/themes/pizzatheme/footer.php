@@ -1,12 +1,14 @@
 <!-- DEBUT FOOTER -->
- <aside>
+    </main>  
+    <footer class="site-footer">
+        COPYRIGHT .... Sponsorisé par l'éauipe FRONT, Merci BRUNO !
+    </footer>
+</div> <!-- fin wrapper -->
+
+<aside class="site-aside">
     <!-- SIDEBAR -->
     <?php dynamic_sidebar('principal'); ?>
- </aside>
-</main> 
-<footer>
-    COPYRIGHT ....
-</footer>
+</aside>
 <?php wp_footer(); ?>
 </body>
 </html>

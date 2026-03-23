@@ -9,7 +9,9 @@ add_action('after_setup_theme', 'mde_theme_setup');
 function mde_sidebar_setup() {
     register_sidebar([
         'id' => 'principal',
-        'name' => 'Sidebar Principale'
+        'name' => 'Sidebar Principale',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>'
     ]);
 }
 
