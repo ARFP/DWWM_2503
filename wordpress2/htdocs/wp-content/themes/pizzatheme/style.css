@@ -4,6 +4,7 @@ Author: DWWM2503
 */
 
 :root {
+    --bg: black;
     --primary: #FFDE00;
     --secondary: #B3A125;
     --tertiary: #3B4CCA;
@@ -12,7 +13,39 @@ Author: DWWM2503
     --header-top: 135px;
 }
 
+body.light {
+        --bg: white;
+        --primary: #3B4CCA;
+        --tertiary: #FFDE00;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: white;
+        --primary: #3B4CCA;
+        --tertiary: #FFDE00;
+    }
+
+    body.light {
+        --bg: black;
+        --primary: #FFDE00;
+        --tertiary: #3B4CCA;
+    }
+}
+
+
+
+@media print {
+    .site-header { display: none; }
+}
+
+@font-face {
+    font-family: OpenDys;
+    src: url('./fonts/OpenDyslexic-Regular.otf');
+}
+
 body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     /*display: grid;
     grid-template-columns: 1fr 240px;
     grid-template-rows: 120px 1fr 120px;
@@ -23,8 +56,13 @@ body {
                          flex-wrap: wrap;
     max-width: 100%;
     margin: 0;
-    background-color:black;
+    background-color:var(--bg);
    /* transition: all ease .4s;*/
+}
+
+body.opendys {
+    font-family: OpenDys;
+    font-size: 14px;
 }
 
 @media (max-width:960px) {
@@ -90,7 +128,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     background-color: var(--tertiary);
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px var(--bg);
     position: fixed;
 }
 
@@ -165,5 +203,5 @@ header > nav{
 }
 
 .wp-calendar-table th {
-    color: black;
+    color: var(--bg);
 }
