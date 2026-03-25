@@ -1,7 +1,7 @@
 <!-- DEBUT FOOTER -->
     </main>  
     <footer class="site-footer">
-        COPYRIGHT .... Sponsorisé par l'éauipe FRONT, Merci BRUNO !
+        COPYRIGHT Équipe FRONTEND, Merci à tous !
     </footer>
 </div> <!-- fin wrapper -->
 

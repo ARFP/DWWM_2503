@@ -24,7 +24,9 @@
             <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/pikatchu.jpg" alt="Logo de Toto">
         </a>
         <div class="site-navigation">
-            <p class="site-title"><?php bloginfo('name'); ?></p>
+            <p class="site-title"><?php bloginfo('name'); ?>
+                <br>
+                <span><?php bloginfo('description'); ?></span></p>
             <nav>
                 <?php wp_nav_menu(['theme_location' => 'menuPrincipal']); ?> 
             </nav>

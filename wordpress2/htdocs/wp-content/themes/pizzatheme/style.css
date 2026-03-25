@@ -34,11 +34,6 @@ body.light {
 }
 
 
-
-@media print {
-    .site-header { display: none; }
-}
-
 @font-face {
     font-family: OpenDys;
     src: url('./fonts/OpenDyslexic-Regular.otf');
@@ -46,14 +41,8 @@ body.light {
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /*display: grid;
-    grid-template-columns: 1fr 240px;
-    grid-template-rows: 120px 1fr 120px;
-    grid-template-areas: "H H"
-                         "M S"
-                         "F S";*/
-                         display: flex;
-                         flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
     max-width: 100%;
     margin: 0;
     background-color:var(--bg);
@@ -65,49 +54,6 @@ body.opendys {
     font-size: 14px;
 }
 
-@media (max-width:960px) {
-   /* body {
-    grid-template-columns: 1fr;
-    grid-template-rows: 120px 1fr 250px 120px;
-    grid-template-areas: "H"
-                         "M"
-                         "S"
-                         "F";
-    }*/
-}
-
-.wrapper {
-    flex: 1;
-    margin-top: var(--header-top);
-}
-
-.site-header {
-    grid-area: H;
-    width: 100%;
-}
-
-.site-main {
-    grid-area: M;
-}
-
-.site-aside {
-    grid-area: S;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 240px;
-    flex: 0 0 240px;
-    margin-top: var(--header-top);
-    background-color: var(--tertiary);
-    color: var(--primary);
-}
-
-.site-footer {
-    grid-area: F;
-    clear:left;
-    background-color: var(--tertiary);
-    color: var(--primary);
-}
-
 a {
     text-decoration: none;
     color: var(--primary)
@@ -117,11 +63,7 @@ img {
     max-width: 100%;
 }
 
-.logo {
-    border-radius: 50%;
-    width: 120px;
-    transform: rotateY(180deg);
-}
+/* ENTETE DU SITE */
 
 .site-header {
     position: relative;
@@ -130,6 +72,7 @@ img {
     background-color: var(--tertiary);
     box-shadow: 0 0 20px var(--bg);
     position: fixed;
+    width: 100%;
 }
 
 .site-header::before {
@@ -151,12 +94,24 @@ img {
 .site-title {
     font-size: 24px;
     font-weight: bold;
-    margin: 30px 0 0 20px;
+    margin: 20px 0 0 20px;
     color: var(--primary)
 }
 
-header > nav{
-    
+.site-title span {
+    font-size: 12px;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 120px;
+    transform: rotateY(180deg);
+}
+
+
+/* MENU PRINCIPAL */
+
+.site-header > nav{
     width: 100%;
 }
 
@@ -187,8 +142,37 @@ header > nav{
     box-shadow: 0 0 10px var(--primary);
 }
 
+/* CONTENU PRINCIPAL */
 
-/* SURCHARGES WP */
+.wrapper {
+    flex: 1;
+    margin-top: var(--header-top);
+}
+
+/* SIDEBAR */
+
+.site-aside {
+    grid-area: S;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 240px;
+    flex: 0 0 240px;
+    margin-top: var(--header-top);
+    background-color: var(--tertiary);
+    color: var(--primary);
+}
+
+/* PIED DE PAGE DU SITE */
+
+.site-footer {
+    padding: 3rem;
+    background-color: var(--tertiary);
+    color: var(--primary);
+    text-align: center;
+}
+
+
+/* SURCHARGES WordPress */
 
 .wp-calendar-table{
     color: var(--primary);
@@ -205,3 +189,53 @@ header > nav{
 .wp-calendar-table th {
     color: var(--bg);
 }
+
+
+/* AFFICHAGE 1 ARTICLE */
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: stretch; /* valeur par défaut */
+}
+
+.card {
+    background: #00000022;
+    position: relative;
+    width: 360px;
+    max-width: 100%;
+}
+
+.card-date {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffffff66;
+    padding: 2px;
+}
+
+.card-thumb {
+    height: 220px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-thumb img {
+    /*height: 100%;*/
+    width: 100%;
+}
+
+.card:hover img {
+    transform: scale(110%);
+    transition: all ease 0.8s;
+}
+
+
+.wp-singular .card {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
