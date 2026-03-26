@@ -1,9 +1,9 @@
-name: mdevoldere-wordpress
+name: dwwm2503-wp-ecf
 volumes:
   db_data_wp:
 services:
-  wordpress_db:
-    container_name: mdevoldere-wordpress-db
+  wordpress_ecf_db:
+    container_name: dwwm2503-wp-ecf-db
     image: mariadb:11.8.5
     command: '--default-authentication-plugin=mysql_native_password'
     volumes:
@@ -11,21 +11,21 @@ services:
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=db_wordpress
+      - MYSQL_DATABASE=db_ecf_wordpress
       - MYSQL_USER=username
       - MYSQL_PASSWORD=password
-    ports: ['3310:3306']
+    ports: ['3380:3306']
   wordpress:
-    container_name: mdevoldere-wordpress-web
-    image: wordpress:6.9.1-php8.5-apache
-    ports: ['8088:80']
+    container_name: dwwm2503-wp-ecf-web
+    image: wordpress:6.9.2-php8.5-apache
+    ports: ['8080:80']
     restart: unless-stopped
-    depends_on: ['wordpress_db']
+    depends_on: ['wordpress_ecf_db']
     environment:
-      - WORDPRESS_DB_HOST=wordpress_db
-      - WORDPRESS_DB_NAME=db_wordpress
+      - WORDPRESS_DB_HOST=wordpress_ecf_db
+      - WORDPRESS_DB_NAME=db_ecf_wordpress
       - WORDPRESS_DB_USER=username
       - WORDPRESS_DB_PASSWORD=password
     working_dir: /var/www/html
     volumes:
-      - ./wp_app:/var/www/html
+      - ./ecf:/var/www/html
